@@ -67,14 +67,30 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px #ffeb3b, 0 0 10px #ffeb3b, 0 0 15px #ffeb3b, 0 0 20px #ffeb3b;' },
+          '100%': { boxShadow: '0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #ffeb3b, 0 0 40px #ffeb3b;' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'fade-in': 'fade-in 0.5s ease-out',
+        'fade-out': 'fade-out 0.5s ease-out forwards',
+        glow: 'glow 1s ease-in-out',
       },
+      scrollbar: ['rounded', 'dark']
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar')],
 } satisfies Config
 
 export default config
