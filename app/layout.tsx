@@ -29,7 +29,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
-        <Toaster richColors/>
+        <Toaster richColors closeButton duration={2000} position="bottom-left" />
       </body>
     </html>
   );

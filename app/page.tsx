@@ -19,6 +19,24 @@ const page = () => {
 
   const endOfTasksRef = useRef<HTMLDivElement | null>(null);
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  //inputRef.current?.focus();
+  const FocusInputField = () => {
+    const inputElement = inputRef.current;
+    if (inputElement) {
+      const top =
+        inputElement.getBoundingClientRect().top + window.scrollY - 200;
+      window.scrollTo({ top, behavior: "smooth" });
+      {
+        /* input field will get focused after 0.5ms so that there will be enough time for the screen
+           to scroll to the input field with a smooth animation */
+      }
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 500);
+    }
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTask(e.target.value);
   };
@@ -27,9 +45,10 @@ const page = () => {
     event.preventDefault();
     if (Task.length) {
       setUserTask([...UserTask, Task]);
-      setAdding(UserTask.length); // Set adding to the index of the new task
+      setAdding(UserTask.length);
       setTimeout(() => setAdding(null), 500); // Reset adding after 0.5s
       toast.success("Task added successfully");
+
       setTask("");
       setTimeout(() => {
         endOfTasksRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -89,6 +108,7 @@ const page = () => {
         <form onSubmit={handleClick} className="w-full flex justify-center">
           <div className="flex py-14 w-full max-w-lg space-x-3">
             <Input
+              ref={inputRef}
               type="text"
               placeholder="Add task"
               value={Task}
@@ -100,7 +120,15 @@ const page = () => {
           </div>
         </form>
       </div>
-      
+
+      {/* Floating Add Task button to focus input field */}
+      <div style={{ position: "fixed", bottom: "20px", right: "20px" }}>
+        <Button type="button" onClick={FocusInputField}>
+          Add new task
+        </Button>
+      </div>
+
+      {/*To render tasks */}
       <div className="flex flex-wrap w-full justify-center  gap-5">
         {renderTask}
       </div>
