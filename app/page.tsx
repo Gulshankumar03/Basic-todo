@@ -1,26 +1,20 @@
 "use client";
 
-import { AlertDialogDemo } from "@/components/shared/alert";
+import { AlertDialogDemo } from "@/components/shared/Alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React, { ChangeEvent, useRef, useState, useEffect } from "react";
 import { FormEvent } from "react";
 import { toast } from "sonner";
 
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
-
 const page = () => {
   const [Task, setTask] = useState("");
-  const [UserTask, setUserTask] = useState<any[]>([]);
-  const [adding, setAdding] = useState<number | null>(null);
+  const [UserTask, setUserTask] = useState<String[]>([]);
   const [deleting, setDeleting] = useState<number | null>(null);
 
   const endOfTasksRef = useRef<HTMLDivElement | null>(null);
-
   const inputRef = useRef<HTMLInputElement | null>(null);
-  //inputRef.current?.focus();
+
   const FocusInputField = () => {
     const inputElement = inputRef.current;
     if (inputElement) {
@@ -45,10 +39,7 @@ const page = () => {
     event.preventDefault();
     if (Task.length) {
       setUserTask([...UserTask, Task]);
-      setAdding(UserTask.length);
-      setTimeout(() => setAdding(null), 500); // Reset adding after 0.5s
       toast.success("Task added successfully");
-
       setTask("");
       setTimeout(() => {
         endOfTasksRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -69,23 +60,26 @@ const page = () => {
     }, 500); // delay deletion for 0.5s to allow animation to complete
   };
 
-  let renderTask: any = (
-    <h1 className="text-red-400 font-semibold text-xl">No tasks available!</h1>
-  );
+  
+
+  let renderTask: JSX.Element[] = [
+    <h1 className="text-red-400 font-semibold text-xl">No tasks available!</h1>,
+  ];
 
   if (UserTask.length > 0) {
-    renderTask = UserTask.map((t, i) => {
+    renderTask = UserTask.map((item, i) => {
       return (
         <div
           key={i}
-          className={`shadow-sm overflow-hidden px-10 pt-10 pb-5 border-2  gap-5 rounded-2xl flex flex-col justify-between items-stretch w-1/3 ${
+          className={`shadow-sm overflow-hidden px-10 pt-10 pb-5 border-2  gap-5 rounded-2xl flex  justify-between flex-col  w-1/3 ${
             i === deleting ? "animate-fade-out" : "animate-fade-in"
           }`}
         >
           <h2 key={i} className="">
-            {t}
+            {item}
           </h2>
-          <div className="self-end">
+          <div className="flex justify-between items-center">
+            <p className="text-green-200 text-xs">Date & Time</p>
             <AlertDialogDemo onContinue={() => deleteHandler(i)} />
           </div>
         </div>
@@ -122,9 +116,9 @@ const page = () => {
       </div>
 
       {/* Floating Add Task button to focus input field */}
-      <div style={{ position: "fixed", bottom: "20px", right: "20px" }}>
-        <Button type="button" onClick={FocusInputField}>
-          Add new task
+      <div style={{ position: "fixed", bottom: "25px", right: "25px" }}>
+        <Button type="button" className=" shadow-xl" onClick={FocusInputField}>
+          New Task
         </Button>
       </div>
 
