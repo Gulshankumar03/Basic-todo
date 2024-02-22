@@ -3,17 +3,13 @@
 import { AlertDialogDemo } from "@/components/shared/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState, useEffect } from "react";
 import { FormEvent } from "react";
 import { toast } from "sonner";
-import { motion } from "framer-motion";
 
-const itemVariants = {
-  enter: { opacity: 0, y: -20 },
-  enterActive: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  exit: { opacity: 1, y: 0 },
-  exitActive: { opacity: 0, y: 20, transition: { duration: 0.5 } },
-};
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const page = () => {
   const [Task, setTask] = useState("");
@@ -63,7 +59,7 @@ const page = () => {
       return (
         <div
           key={i}
-          className={`shadow-md p-5 border-2 gap-3 rounded-md flex flex-col justify-between items-stretch w-1/2 ${
+          className={`shadow-sm overflow-hidden px-10 pt-10 pb-5 border-2  gap-5 rounded-2xl flex flex-col justify-between items-stretch w-1/3 ${
             i === deleting ? "animate-fade-out" : "animate-fade-in"
           }`}
         >
@@ -80,9 +76,16 @@ const page = () => {
       <div ref={endOfTasksRef} key="endOfTasksRef" className="h-4" />
     );
   }
+
+  useEffect(() => {
+    document.body.style.backgroundImage = '")';
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundSize = "cover";
+  }, []);
+
   return (
     <>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center h-56">
         <form onSubmit={handleClick} className="w-full flex justify-center">
           <div className="flex py-14 w-full max-w-lg space-x-3">
             <Input
@@ -97,7 +100,8 @@ const page = () => {
           </div>
         </form>
       </div>
-      <div className="flex flex-col w-full justify-center items-center pt-10 pb-20 gap-5">
+      
+      <div className="flex flex-wrap w-full justify-center  gap-5">
         {renderTask}
       </div>
     </>

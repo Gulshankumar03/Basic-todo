@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/shared/theme-provider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import Navbar from "@/components/shared/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${font.className} pb-8 style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/crissxcross.png')"}}`}>
+      <body className={`${font.className} pb-8`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
