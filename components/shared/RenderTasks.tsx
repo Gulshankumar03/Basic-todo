@@ -3,6 +3,7 @@ import { AlertDialogDemo } from "@/components/shared/Alert";
 
 interface TaskProps {
   task: String;
+  date: String;
   index: number;
   deleting: number | null;
   deleteHandler: (index: number) => void;
@@ -12,6 +13,7 @@ const RenderTasks: React.FC<TaskProps> = ({
   task,
   index,
   deleting,
+  date,
   deleteHandler,
 }) => {
   return (
@@ -23,7 +25,7 @@ const RenderTasks: React.FC<TaskProps> = ({
     >
       <h2>{task}</h2>
       <div className="flex justify-between items-center">
-        <p className="text-green-200 text-xs">Date & Time</p>
+        <p className="text-green-200 text-xs">{date}</p>
         <AlertDialogDemo onContinue={() => deleteHandler(index)} />
       </div>
     </div>

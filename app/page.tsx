@@ -14,7 +14,9 @@ import { Button } from "@/components/ui/button";
 
 const Page = () => {
   const [currentTask, setCurrentTask] = useState("");
-  const [taskList, setTaskList] = useState<String[]>([]);
+  const [taskList, setTaskList] = useState<{ task: String; date: String }[]>(
+    []
+  );
   const [deleting, setDeleting] = useState<number | null>(null);
   const [shouldScroll, setShouldScroll] = useState(false);
 
@@ -41,7 +43,9 @@ const Page = () => {
     (event: FormEvent) => {
       event.preventDefault();
       if (currentTask.length) {
-        setTaskList([...taskList, currentTask]);
+        const currentDate = new Date();
+        const dateTimeString = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
+        setTaskList([...taskList, { task: currentTask, date: dateTimeString }]);
         toast.success("Task added successfully");
         setCurrentTask("");
         setShouldScroll(true);
@@ -101,7 +105,8 @@ const Page = () => {
           taskList.map((item, i) => (
             <RenderTasks
               key={i}
-              task={item}
+              task={item.task}
+              date={item.date}
               index={i}
               deleting={deleting}
               deleteHandler={deleteHandler}
