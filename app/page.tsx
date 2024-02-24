@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import TaskForm from "@/components/shared/TaskForm";
 import RenderTasks from "@/components/shared/RenderTasks";
 import { Button } from "@/components/ui/button";
+import { create } from "./actions/todoActions";
 
 const Page = () => {
   const [currentTask, setCurrentTask] = useState("");
@@ -31,7 +32,7 @@ const Page = () => {
       window.scrollTo({ top, behavior: "smooth" });
       setTimeout(() => {
         inputRef.current?.focus();
-      }, 500);
+      }, 300);
     }
   }, []);
 
@@ -39,7 +40,7 @@ const Page = () => {
     setCurrentTask(e.target.value);
   }, []);
 
-  const handleClick = useCallback(
+  const handleSubmit = useCallback(
     (event: FormEvent) => {
       event.preventDefault();
       if (currentTask.length) {
@@ -89,7 +90,7 @@ const Page = () => {
         task={currentTask}
         inputRef={inputRef}
         handleChange={handleChange}
-        handleClick={handleClick}
+        handleSubmit={handleSubmit}
       />
 
       {/* Floating Add Task button to focus input field */}
@@ -100,7 +101,7 @@ const Page = () => {
       </div>
 
       {/*To render tasks */}
-      <div className="flex flex-wrap w-full justify-center  gap-5">
+      <div className="flex flex-wrap justify-center  gap-10">
         {taskList.length > 0 ? (
           taskList.map((item, i) => (
             <RenderTasks

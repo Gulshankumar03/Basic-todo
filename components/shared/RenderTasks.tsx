@@ -19,7 +19,7 @@ const RenderTasks: React.FC<TaskProps> = ({
   return (
     <div
       key={index}
-      className={`shadow-sm overflow-hidden px-8 pt-8 pb-5 border-2  gap-7 rounded-2xl flex  justify-between flex-col  w-1/3 ${
+      className={`shadow-md overflow-hidden px-8 pt-8 pb-5  gap-6 bg-zinc-300  border-neutral-500  dark:text-white dark:bg-slate-800 rounded-2xl flex  justify-between flex-col  w-1/3 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10  ${
         index === deleting ? "animate-fade-out" : "animate-fade-in"
       }`}
     >
