@@ -19,3 +19,11 @@ export async function create(formData: FormData) {
 
   revalidatePath("/");
 }
+
+export async function deleteTodo(formData: FormData) {
+  const id = formData.get("id") as string;
+  await prisma.todo.delete({
+    where: { id: id },
+  });
+  revalidatePath("/");
+}

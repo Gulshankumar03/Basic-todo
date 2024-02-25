@@ -5,9 +5,9 @@ const Header = () => {
   return (
     <>
       <div className="w-full">
-        <header className="text-3xl font-extrabold">
+        <header className="text-4xl font-bold">
           <Link href="/">
-            Todo<span className="text-violet-700 font-extrabold">List</span>
+            Todo<span className="text-orange-500 font-extrabold">List</span>
           </Link>
         </header>
       </div>

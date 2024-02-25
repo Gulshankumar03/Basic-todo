@@ -1,16 +1,25 @@
 import React from "react";
-import Form from "../createdUi/Form";
+import Form from "./Form";
 
 import { Button } from "../ui/Button";
 import { Input } from "../ui/input";
+import { create } from "@/app/actions/todoActions";
 
 const AddTodo = () => {
   return (
     <>
-      <Form className="w-full flex justify-center">
-        <div className="flex w-1/3 px-12 space-x-3">
-          <Input className="h-12 border-neutral-200  bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 " placeholder="Add Task"/>
-          <Button size={"default"}>Add</Button>
+      <Form action={create} className="w-1/3" >
+        <div className="lg:flex space-x-3">
+          <Input
+            name="input"
+            type="text"
+            autoComplete="off"
+            className="h-12 border-neutral-200  bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 "
+            placeholder="Add Task"
+          />
+          <Button type="submit">
+            Add
+          </Button>
         </div>
       </Form>
     </>
