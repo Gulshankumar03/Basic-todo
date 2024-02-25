@@ -4,7 +4,7 @@ import { deleteTodo } from "@/app/actions/todoActions";
 
 const Todo = ({ todo }: { todo: todoType }) => {
   return (
-    <div className="shadow-xl border-r-2 border-b-2 border-opacity-25 overflow-hidden pt-10 pb-5 px-8 mx-8 bg-zinc-400 border-neutral-500 dark:text-white rounded-3xl flex justify-between flex-col 2xl:w-1/4 xl:w-1/3 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
+    <div className=" flex justify-between flex-col 2xl:w-1/4 xl:w-1/3 shadow-xl border-r-2 border-b-2 border-opacity-25 overflow-hidden pt-10 pb-5 px-8 mx-8 lg:mx-0 bg-zinc-400 border-neutral-500 dark:text-white rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
       <h2>{todo.title}</h2>
       <div className="flex pt-3 justify-between">
         <Button

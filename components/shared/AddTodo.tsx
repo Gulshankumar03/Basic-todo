@@ -8,7 +8,7 @@ import { create } from "@/app/actions/todoActions";
 const AddTodo = () => {
   return (
     <>
-      <Form action={create} className="w-1/3" >
+      <Form action={create} className="md:w-1/3" >
         <div className="lg:flex space-x-3">
           <Input
             name="input"

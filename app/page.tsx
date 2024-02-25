@@ -25,7 +25,7 @@ const page = async () => {
   return (
     <>
       {/* To display add task form */}
-      <div className=" flex justify-center items-center  h-56">
+      <div className="flex flex-col justify-center items-center  h-56">
         <AddTodo />
       </div>
 
