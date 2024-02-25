@@ -21,9 +21,25 @@ export async function create(formData: FormData) {
 }
 
 export async function deleteTodo(formData: FormData) {
-  const id = formData.get("id") as string;
+  const inputId = formData.get("inputId") as string;
   await prisma.todo.delete({
-    where: { id: id },
+    where: { id: inputId },
   });
+  revalidatePath("/");
+}
+
+export async function edit(formData: FormData) {
+  const input = formData.get("newTitle") as string;
+  const inputId = formData.get("inputId") as string;
+
+  await prisma.todo.update({
+    where: {
+      id: inputId,
+    },
+    data: {
+      title: input,
+    },
+  });
+
   revalidatePath("/");
 }

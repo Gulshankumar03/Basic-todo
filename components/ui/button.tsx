@@ -24,7 +24,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-12 px-8 py-2",
-        sm: "h-8 rounded-md px-3",
+        sm: "h-7 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },
@@ -41,22 +41,12 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
   actionButton?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      type,
-      actionButton,
-      onClick,
-      className,
-      variant,
-      size,
-      asChild = false,
-      ...props
-    },
+    { type, actionButton, className, variant, size, asChild = false, ...props },
     ref
   ) => {
     const Comp = asChild ? Slot : "button";
