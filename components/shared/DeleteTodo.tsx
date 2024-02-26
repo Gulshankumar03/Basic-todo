@@ -21,7 +21,7 @@ const DeleteTodo = ({ todo }: { todo: todoType }) => {
         variant={"destructive"}
         size={"sm"}
         className="text-xs min-w-20 "
-        type="button"
+        type="submit"
       >
         Delete
       </Button>
