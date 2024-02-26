@@ -22,6 +22,9 @@ const page = async () => {
   const data = await getData();
   return (
     <>
+
+      {/* <div  style={{ position: "fixed", bottom: "15px", left: "15px" }} className="opacity-40 rounded-full h-[40rem] w-[40rem] bg-orange-400 -mx-[15%] -my-[15%] -z-20"></div>
+      <div  style={{ position: "fixed", top: "15px", right: "15px" }} className="opacity-40 rounded-full h-[40rem] w-[40rem] bg-orange-400 -mx-[15%] -my-[15%] -z-20"></div> */}
       {/* To display add task form */}
       <div className="flex flex-col justify-center items-center  h-56">
         <AddTodo />

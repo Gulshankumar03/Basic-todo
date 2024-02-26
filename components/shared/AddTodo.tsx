@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import Form from "./Form";
 
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { create } from "@/app/actions/todoActions";
 import { Plus } from "lucide-react";

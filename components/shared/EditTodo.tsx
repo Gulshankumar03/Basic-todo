@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { edit } from "@/app/actions/todoActions";
 import { Input } from "../ui/input";
 import { toast } from "sonner";

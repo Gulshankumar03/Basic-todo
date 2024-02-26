@@ -1,7 +1,7 @@
 "use client";
 import { todoType } from "@/types/todoTypes";
 import React from "react";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import Form from "./Form";
 import { deleteTodo } from "@/app/actions/todoActions";
 import { AlertButton } from "./AlertButton";
