@@ -1,7 +1,6 @@
 import AddTodo from "@/components/shared/AddTodo";
 import Todo from "@/components/shared/Todo";
 import { prisma } from "@/utils/prisma";
-import { Plus } from "lucide-react";
 import React from "react";
 
 async function getData() {
@@ -38,16 +37,6 @@ const page = async () => {
           </h1>
         )}
       </div>
-
-      {/* Floating Add Task button to focus input field */}
-      {/* <div
-        className="z-20"
-        style={{ position: "fixed", bottom: "15px", right: "15px" }}
-      >
-        <button className="bg-orange-600 rounded-full md:size-16 sm:size-14 flex items-center justify-center ">
-        <Plus size={36} />
-        </button>
-      </div> */}
     </>
   );
 };

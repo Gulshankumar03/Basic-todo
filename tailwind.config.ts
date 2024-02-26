@@ -87,7 +87,6 @@ const config = {
         'fade-out': 'fade-out 0.5s ease-out forwards',
         glow: 'glow 1s ease-in-out',
       },
-      scrollbar: ['rounded', 'dark']
     },
   },
   plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar')],
