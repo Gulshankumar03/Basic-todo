@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-import { prisma } from "@/utils/prisma";
+import prisma from "@/utils/prisma";
 
 export async function create(formData: FormData) {
   const input = formData.get("input") as string;
