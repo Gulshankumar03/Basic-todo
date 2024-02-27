@@ -1,7 +1,13 @@
 import AddTodo from "@/components/shared/AddTodo";
 import Todo from "@/components/shared/Todo";
+import { todoType } from "@/types/todoTypes";
 import { prisma } from "@/utils/prisma";
 import React from "react";
+
+interface TodoProps {
+  todo: todoType;
+}
+
 
 async function getData() {
   const data = await prisma.todo.findMany({
@@ -33,7 +39,7 @@ const page = async () => {
       {/* To render tasks */}
       <div className="w-4/5 mx-auto flex flex-col flex-wrap justify-center xl:flex-row xl:w-full gap-10">
         {data.length ? (
-          data.map((item, id) => <Todo todo={item} key={id} />)
+          data.map((item: todoType, id:number) => <Todo todo={item} key={id} />)
         ) : (
           <h1 className="text-red-400 font-semibold text-xl">
             No tasks available!
