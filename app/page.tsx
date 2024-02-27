@@ -4,11 +4,6 @@ import { todoType } from "@/types/todoTypes";
 import { prisma } from "@/utils/prisma";
 import React from "react";
 
-interface TodoProps {
-  todo: todoType;
-}
-
-
 async function getData() {
   const data = await prisma.todo.findMany({
     select: {
